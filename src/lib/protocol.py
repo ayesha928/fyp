@@ -1,5 +1,15 @@
 #function 1:
-def encode_command( command_type, status, section_number, device_number ): #return the byte
+def encode_command( command_type, status, section_number, device_number ):
+	"""
+	Encodes the provided command parameters into a byte representation of the command
+	
+	Returns a byte that can be written to the serial port file for communication with PCB
+	
+	:param command_type: Can either be 'SET' or 'GET'
+	:param status: Can either be 'ON' or 'OFF'
+	:param section_number: Numerical number for the section
+	:param device_number: Numerical number for the device
+	""" 
 	binary_bit_sequence = bin(section_number)[2:] + bin(device_number)[2:] #concatinate binary numbers for protocol
 	if 'ON' == status:
 		binary_bit_sequence = '1' + binary_bit_sequence
@@ -35,5 +45,5 @@ def decode_command(input_byte): #return a dictionary
 		
 	
 ##test code
-a = encode_command( 'SET','ON', 3, 2 )
-b = decode_command( 'U' )
+#a = encode_command( 'SET','ON', 3, 2 )
+#b = decode_command( 'U' )
