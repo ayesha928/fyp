@@ -14,14 +14,14 @@ def encode_command( command_type, status, section_number, device_number ): #retu
 	return ascii_char #return ASCII character for bit sequence
 
 #function 2:
-def decode_command(): #return a dictionary
+def decode_command(input_byte): #return a dictionary
 	byte_binary_sequence = bin(ord(input_byte))[2:] # byte ka binary sequence a jaey ga as string jis ki ap slicing bhi kar saktay hain
 	command_type = byte_binary_sequence[0] #first bit of Byte
 	status = byte_binary_sequence[1] #second bit of Byte
 	section_number = byte_binary_sequence[2:3] #3rd, 4th, 5th bits of Byte
 	device_number = byte_binary_sequence[5:3] #last 3 bits of Byte
-	dec_section_number = int(section_number)
-	dec_device_number = int(device_number)
+	dec_section_number = int(section_number, 2)
+	dec_device_number = int(device_number, 2)
 	if '1' == byte_binary_sequence[0]:
 		command_type = 'SET'
 	else:
@@ -36,4 +36,4 @@ def decode_command(): #return a dictionary
 	
 ##test code
 a = encode_command( 'SET','ON', 3, 2 )
-#a = decode_command( 01011011 )
+b = decode_command( 'U' )
