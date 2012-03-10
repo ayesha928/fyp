@@ -19,6 +19,8 @@ def encode_command( command_type, status, section_number, device_number ):
 		binary_bit_sequence = '1' + binary_bit_sequence
 	else:
 		binary_bit_sequence = '0' + binary_bit_sequence
+	
+	print(binary_bit_sequence)
 	decimal_of_binary_sequence = int(binary_bit_sequence, 2) #convert binary (string/Byte/set of bits) to decimal
 	ascii_char = chr(decimal_of_binary_sequence) #convert decimal to ASCII character
 	return ascii_char #return ASCII character for bit sequence
