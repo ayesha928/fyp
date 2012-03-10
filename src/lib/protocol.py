@@ -10,7 +10,7 @@ def encode_command( command_type, status, section_number, device_number ):
 	:param section_number: Numerical number for the section
 	:param device_number: Numerical number for the device
 	""" 
-	binary_bit_sequence = bin(section_number)[2:] + bin(device_number)[2:] #concatinate binary numbers for protocol
+	binary_bit_sequence = bin(section_number)[2:].zfill(3) + bin(device_number)[2:].zfill(3) #concatinate binary numbers for protocol
 	if 'ON' == status:
 		binary_bit_sequence = '1' + binary_bit_sequence
 	else:
@@ -20,7 +20,6 @@ def encode_command( command_type, status, section_number, device_number ):
 	else:
 		binary_bit_sequence = '0' + binary_bit_sequence
 	
-	print(binary_bit_sequence)
 	decimal_of_binary_sequence = int(binary_bit_sequence, 2) #convert binary (string/Byte/set of bits) to decimal
 	ascii_char = chr(decimal_of_binary_sequence) #convert decimal to ASCII character
 	return ascii_char #return ASCII character for bit sequence
