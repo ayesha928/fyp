@@ -33,11 +33,11 @@ def decode_command(input_byte): #return a dictionary
 	
 	:param input_byte: a byte charachter that will be decoded  
 	""" 
-	byte_binary_sequence = bin(ord(input_byte))[2:] 
+	byte_binary_sequence = bin(ord(input_byte))[2:].zfill(8)  
 	command_type = byte_binary_sequence[0] #first bit of Byte
 	status = byte_binary_sequence[1] #second bit of Byte
-	section_number = byte_binary_sequence[2:3] #3rd, 4th, 5th bits of Byte
-	device_number = byte_binary_sequence[5:3] #last 3 bits of Byte
+	section_number = byte_binary_sequence[2:4] #3rd, 4th, 5th bits of Byte
+	device_number = byte_binary_sequence[5:7] #last 3 bits of Byte
 	dec_section_number = int(section_number, 2)
 	dec_device_number = int(device_number, 2)
 	if '1' == byte_binary_sequence[0]:
@@ -52,6 +52,3 @@ def decode_command(input_byte): #return a dictionary
 	return my_dict #return a dictionary containing command_type, status, section_number, device_number
 		
 	
-##test code
-#a = encode_command( 'SET','ON', 3, 2 )
-#b = decode_command( 'U' )

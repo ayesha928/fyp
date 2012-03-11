@@ -20,3 +20,17 @@ def test_encode_command_2():
     
     assert '10111011' == bin(ord(byte))[2:].zfill(8)
     
+
+def test_decode_command_1():
+	"Decode Command - Test 1 - GET command decoding test"
+	
+	d = decode_command(chr(217))
+	
+	assert d == my_dict("GET", "ON", 5, 3)
+	
+def test_decode_command_2():
+	"Decode Command -Test 2 - SET command decoding test"
+	
+	d = decode_command(chr(217)
+	
+	assert d == my_dict("SET", "OFF", 7, 3)
