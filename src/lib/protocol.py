@@ -26,7 +26,14 @@ def encode_command( command_type, status, section_number, device_number ):
 
 #function 2:
 def decode_command(input_byte): #return a dictionary
-	byte_binary_sequence = bin(ord(input_byte))[2:] # byte ka binary sequence a jaey ga as string jis ki ap slicing bhi kar saktay hain
+	"""
+	Decodes the provided input byte into a dictionary containing command_type, status, section_number, device_number
+	
+	input_byte will be passed to this function after reading from file 
+	
+	:param input_byte: a byte charachter that will be decoded  
+	""" 
+	byte_binary_sequence = bin(ord(input_byte))[2:] 
 	command_type = byte_binary_sequence[0] #first bit of Byte
 	status = byte_binary_sequence[1] #second bit of Byte
 	section_number = byte_binary_sequence[2:3] #3rd, 4th, 5th bits of Byte

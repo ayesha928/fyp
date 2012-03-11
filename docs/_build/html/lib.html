@@ -54,6 +54,21 @@
 <span id="lib"></span><h1>Library Functions<a class="headerlink" href="#library-functions" title="Permalink to this headline">¶</a></h1>
 <p>Contains common code for the project</p>
 <span class="target" id="module-lib.protocol"></span><dl class="function">
+<dt id="lib.protocol.decode_command">
+<tt class="descclassname">lib.protocol.</tt><tt class="descname">decode_command</tt><big>(</big><em>input_byte</em><big>)</big><a class="headerlink" href="#lib.protocol.decode_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodes the provided input byte into a dictionary containing command_type, status, section_number, device_number</p>
+<p>input_byte will be passed to this function after reading from file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>input_byte</strong> &#8211; a byte charachter that will be decoded</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="lib.protocol.encode_command">
 <tt class="descclassname">lib.protocol.</tt><tt class="descname">encode_command</tt><big>(</big><em>command_type</em>, <em>status</em>, <em>section_number</em>, <em>device_number</em><big>)</big><a class="headerlink" href="#lib.protocol.encode_command" title="Permalink to this definition">¶</a></dt>
 <dd><p>Encodes the provided command parameters into a byte representation of the command</p>
