@@ -1,0 +1,180 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dummy Pcb &mdash; Smart Phone Home Automation System 0,1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0,1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Smart Phone Home Automation System 0,1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Smart Phone Home Automation System 0,1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dummy-pcb">
+<span id="id1"></span><h1>Dummy Pcb<a class="headerlink" href="#dummy-pcb" title="Permalink to this headline">¶</a></h1>
+<p>Contains code for the dummy pcb(printed circuit board)</p>
+<span class="target" id="module-dummy_pcb.dummy_pcb"></span><dl class="class">
+<dt id="dummy_pcb.dummy_pcb.PCB">
+<em class="property">class </em><tt class="descclassname">dummy_pcb.dummy_pcb.</tt><tt class="descname">PCB</tt><a class="headerlink" href="#dummy_pcb.dummy_pcb.PCB" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class contains those functions and methods which reflects the pcb as dummy (software of pcb)</p>
+<p>Varibale pcb_status stores the status of all the sections and devices in the form of nested lists</p>
+<dl class="method">
+<dt id="dummy_pcb.dummy_pcb.PCB.connect_device">
+<tt class="descname">connect_device</tt><big>(</big><em>section</em>, <em>device</em><big>)</big><a class="headerlink" href="#dummy_pcb.dummy_pcb.PCB.connect_device" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method connects the device</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>section</strong> &#8211; Numerical number for the section</li>
+<li><strong>device</strong> &#8211; Numerical number for the device</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dummy_pcb.dummy_pcb.PCB.disconnect_device">
+<tt class="descname">disconnect_device</tt><big>(</big><em>section</em>, <em>device</em><big>)</big><a class="headerlink" href="#dummy_pcb.dummy_pcb.PCB.disconnect_device" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method disconnects the devices</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>section</strong> &#8211; Numerical number for the section</li>
+<li><strong>device</strong> &#8211; Numerical number for the device</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dummy_pcb.dummy_pcb.PCB.get_status">
+<tt class="descname">get_status</tt><big>(</big><em>section</em>, <em>device</em><big>)</big><a class="headerlink" href="#dummy_pcb.dummy_pcb.PCB.get_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method gets the status of devices as per requirement</p>
+<p>Returns the status of device</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>section</strong> &#8211; Numerical number for the section</li>
+<li><strong>device</strong> &#8211; Numerical number for the device</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dummy_pcb.dummy_pcb.PCB.set_status">
+<tt class="descname">set_status</tt><big>(</big><em>section</em>, <em>device</em>, <em>status</em><big>)</big><a class="headerlink" href="#dummy_pcb.dummy_pcb.PCB.set_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method sets the status of devices as per requirement</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>section</strong> &#8211; Numerical number for the section</li>
+<li><strong>device</strong> &#8211; Numerical number for the device</li>
+<li><strong>status</strong> &#8211; Can either be &#8216;ON&#8217; or &#8216;OFF&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/dummy_pcb.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Smart Phone Home Automation System 0,1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Sumera Kanwal &amp; Ayesha Shafqat.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>
