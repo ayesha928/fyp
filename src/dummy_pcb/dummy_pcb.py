@@ -14,7 +14,7 @@ class PCB(object):
 		['Not Connected','Not Connected','Not Connected','Not Connected','Not Connected','Not Connected','Not Connected']
 		]
 		
-	def set_status(self,section,device,status):
+	def set_status(self, section, device, status):
 		"""
 		This method sets the status of devices as per requirement
 		
@@ -24,7 +24,7 @@ class PCB(object):
 		""" 
 		pass
 
-	def get_status(self,section,device):
+	def get_status(self, section, device):
 		"""
 		This method gets the status of devices as per requirement
 		
@@ -36,16 +36,16 @@ class PCB(object):
 		
 		pass
 	
-	def connect_device(section,device):
+	def connect_device(self, section, device):
 		"""
 		This method connects the device
 		
 		:param section: Numerical number for the section
 		:param device: Numerical number for the device
 		""" 
-		pass
+		self.pcb_status[section][device] = 'OFF'
 	
-	def disconnect_device(section,device):
+	def disconnect_device(self,  section, device):
 		"""
 		This method disconnects the devices
 		
