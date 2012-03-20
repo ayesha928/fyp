@@ -22,7 +22,7 @@ class PCB(object):
 		:param device: Numerical number for the device
 		:param status: Can either be 'ON' or 'OFF'
 		""" 
-		pass
+		self.pcb_status[section][device][status] = 'Not Connected'
 
 	def get_status(self, section, device):
 		"""
@@ -34,7 +34,7 @@ class PCB(object):
 		:param device: Numerical number for the device
 		""" 
 		
-		pass
+		self.pcb_status[section][device] = 'Not Connected'
 	
 	def connect_device(self, section, device):
 		"""
@@ -45,11 +45,11 @@ class PCB(object):
 		""" 
 		self.pcb_status[section][device] = 'OFF'
 	
-	def disconnect_device(self,  section, device):
+	def disconnect_device(self, section, device):
 		"""
 		This method disconnects the devices
 		
 		:param section: Numerical number for the section
 		:param device: Numerical number for the device
 		""" 
-		pass 
+		self.pcb_status[section][device] = 'Not Connected'

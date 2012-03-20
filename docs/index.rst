@@ -9,7 +9,7 @@ Welcome to Smart Phone Home Automation System's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    
    README
    lib
