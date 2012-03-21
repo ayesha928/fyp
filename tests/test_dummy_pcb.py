@@ -3,7 +3,7 @@ import sys, os
 #Adding our src folder to import path so code from within src folder can be imported easily
 sys.path.insert(0, os.path.dirname(os.path.abspath('.')) + '/src')
 
-from dummy_pcb.dummy_pcb import get_status,set_status,connect_device,disconnect_device
+from dummy_pcb import dummy_pcb
 
 my_pcb = dummy_pcb.PCB()
 
