@@ -22,7 +22,7 @@ def test_encode_command_2():
 def test_decode_command_1():
 	"Decode Command - Test 1 - GET command decoding test"
 
-	d = decode_command(chr(217))  #how is this get test? apnay binary lay kay daikha hay is byte ka?
+	d = decode_command(chr(107)) 
 	
 	assert d['command_type'] == 'GET'
 	assert d['status'] == 'ON'
@@ -30,6 +30,7 @@ def test_decode_command_1():
 def test_decode_command_2():
 	"Decode Command -Test 2 - SET command decoding test"
 	
-	d = decode_command(chr(217))
+	d = decode_command(chr(187))
 	
-	assert 'd' 
+	assert d['command_type'] == 'SET'
+	assert d['status'] == 'OFF'
