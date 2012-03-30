@@ -1,3 +1,4 @@
+from lib.protocol import encode_command, decode_command
 class PCB(object):
 	"""
 	This class contains those functions and methods which reflects the pcb as dummy (software of pcb) 
@@ -53,3 +54,27 @@ class PCB(object):
 		:param device: Numerical number for the device
 		""" 
 		self.pcb_status[section][device] = 'Not Connected'
+		
+	def process_request():
+		"""
+		This method reads the first byte form infile and after processing writes the encoded command in the outfile. 
+		This method uses infinite loop that will process request after evry second.  
+		
+		"""
+		infile = open('infile.txt', 'rb')
+		outfile = open('outfile.txt', 'wb')
+		
+		while True:
+			
+			time.sleep(1)
+			infile.seek(-1,2)
+			byte = infile.read(1)
+			cmd = decode_command(byte)
+			if 'GET' == cmd['command_type']:
+				section = cmd['section']
+				device = cmd['device']
+				status = self.pcb_status[section][device]
+				cmd['status'] = status
+			new_byte = encode_command( cmd['command_type'], cmd['status'], cmd['section'], cmd['device'] )
+			outfile.write(new_byte)
+			outfile.flush()
