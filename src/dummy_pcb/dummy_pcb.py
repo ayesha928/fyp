@@ -55,7 +55,7 @@ class PCB(object):
 		""" 
 		self.pcb_status[section][device] = 'Not Connected'
 		
-	def process_request():
+	def process_request( ):
 		"""
 		This method reads the first byte form infile and after processing writes the encoded command in the outfile. 
 		This method uses infinite loop that will process request after evry second.  

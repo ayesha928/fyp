@@ -14,6 +14,7 @@ Contents:
    README
    lib
    dummy_pcb
+   controller
 
 
 

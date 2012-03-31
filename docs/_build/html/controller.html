@@ -1,0 +1,175 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Controller Module &mdash; Smart Phone Home Automation System 0,1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0,1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Smart Phone Home Automation System 0,1 documentation" href="index.html" />
+    <link rel="prev" title="Dummy Pcb" href="dummy_pcb.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dummy_pcb.html" title="Dummy Pcb"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Smart Phone Home Automation System 0,1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="controller-module">
+<span id="controller"></span><h1>Controller Module<a class="headerlink" href="#controller-module" title="Permalink to this headline">¶</a></h1>
+<p>Contains code for the controller module of the system.</p>
+<span class="target" id="module-controller.controller"></span><dl class="class">
+<dt id="controller.controller.controller">
+<em class="property">class </em><tt class="descclassname">controller.controller.</tt><tt class="descname">controller</tt><a class="headerlink" href="#controller.controller.controller" title="Permalink to this definition">¶</a></dt>
+<dd><p>controller class contain those methods and functions which are part of controller module.
+It is the part which will interact with PCB as well as smart phone! 
+friendly names are the human readable names for the section and devices.</p>
+<dl class="method">
+<dt id="controller.controller.controller.get_all_sections">
+<tt class="descname">get_all_sections</tt><big>(</big><em>section</em><big>)</big><a class="headerlink" href="#controller.controller.controller.get_all_sections" title="Permalink to this definition">¶</a></dt>
+<dd><p>get_all_sections is a function that print status of all devices of all sections</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="controller.controller.controller.get_device_names">
+<tt class="descname">get_device_names</tt><big>(</big><em>device_list</em><big>)</big><a class="headerlink" href="#controller.controller.controller.get_device_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>get_device_names is a function that gets names of the devices.
+:param device_list: a device list of 8 rows, 8 columns</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="controller.controller.controller.get_one_device">
+<tt class="descname">get_one_device</tt><big>(</big><em>section</em>, <em>device</em><big>)</big><a class="headerlink" href="#controller.controller.controller.get_one_device" title="Permalink to this definition">¶</a></dt>
+<dd><p>get_status_of_one_device is a function that print status of one device in one section
+:param section: Numerical number or character string for the section
+:param device: Numerical number or character string for the device</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="controller.controller.controller.get_one_section">
+<tt class="descname">get_one_section</tt><big>(</big><em>section</em><big>)</big><a class="headerlink" href="#controller.controller.controller.get_one_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>get_status_of_one_section is a function that print status of all devices
+:param section: Numerical number or character string for the section</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="controller.controller.controller.get_section_names">
+<tt class="descname">get_section_names</tt><big>(</big><em>section_list</em><big>)</big><a class="headerlink" href="#controller.controller.controller.get_section_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>get_section_names is a function that assigns names to sections
+:param section_list: a list of length 8</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="controller.controller.controller.set_all_sections">
+<tt class="descname">set_all_sections</tt><big>(</big><em>section</em>, <em>status</em><big>)</big><a class="headerlink" href="#controller.controller.controller.set_all_sections" title="Permalink to this definition">¶</a></dt>
+<dd><p>set_all_sections is a function that set status ON/OFF to all devices of all sections
+:param status: Can either be &#8216;ON&#8217; or &#8216;OFF&#8217;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="controller.controller.controller.set_one_device">
+<tt class="descname">set_one_device</tt><big>(</big><em>section</em>, <em>device</em>, <em>status</em><big>)</big><a class="headerlink" href="#controller.controller.controller.set_one_device" title="Permalink to this definition">¶</a></dt>
+<dd><p>set_one_device is a function that sets status of one device in a section
+:param section: Numerical number or character string for the section
+:param device: Numerical number or character string for the device</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="controller.controller.controller.set_one_section">
+<tt class="descname">set_one_section</tt><big>(</big><em>section</em>, <em>status</em><big>)</big><a class="headerlink" href="#controller.controller.controller.set_one_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>set_one_section is a function that takes two parameters - section and status
+:param status: Can either be &#8216;ON&#8217; or &#8216;OFF&#8217;
+:param section: Numerical number or character string for the section</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dummy_pcb.html"
+                        title="previous chapter">Dummy Pcb</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/controller.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dummy_pcb.html" title="Dummy Pcb"
+             >previous</a> |</li>
+        <li><a href="index.html">Smart Phone Home Automation System 0,1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Sumera Kanwal &amp; Ayesha Shafqat.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>
