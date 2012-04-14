@@ -2,7 +2,7 @@ from lib.protocol import encode_command, decode_command
 
 class Controller(object):
     """
-    controller class contain those methods and functions which are part of controller module.
+    controller class contains those methods and functions which are part of controller module.
     It is the part which will interact with PCB as well as smart phone! 
     friendly names are the human readable names for the section and devices.
     """
@@ -44,3 +44,39 @@ class Controller(object):
             self.rev_device_friendly_names[section] = {}
             
         self.rev_device_friendly_names[section][friendly_name] = device_number
+        
+    def get_section_friendly_names(self, section_number):
+        return self.section_friendly_names[section_number]
+        return self.rev_section_friendly_names[section_number]
+        
+    def get_device_friendly_name(self , section , device_number):
+        
+        if not str(section).isdigit():
+            section = self.rev_section_friendly_names[section]
+        
+        self.device_friendly_names[section][device_number] = friendly_name
+        
+        if section not in self.rev_device_friendly_names.keys():
+            self.rev_device_friendly_names[section] = {}
+            
+        return self.rev_device_friendly_names[section][device_number]
+        
+    def get_device_number(self,section_number, device_number):
+        self.device_friendly_names[section_number][device_number]
+        return self.rev_device_friendly_names[section_number][device_number]
+        
+    def get_section_number(self,section_name):
+         self.section_friendly_names[section_name]
+         return self.section_friendly_names[section_name]
+    
+    def set_device_status(self,section_name, device_name, status):
+        self.device_friendly_names[section_name][device_name] = status
+        self.rev_device_friendly_names[section_name][device_name] = status
+        
+        
+    def get_device_status(self,section_name, device_name):
+        self.device_friendly_names[section_name][device_name]
+        return self.rev_device_friendly_names[section_name][device_name]
+        
+        
+        

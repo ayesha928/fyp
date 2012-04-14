@@ -50,7 +50,7 @@ class controller(object):
         :param device: Numerical number or character string for the device
         """
     if isinstance(section, device, str):
-            for s in self.device_friendly_names:selfself
+            for s in self.device_friendly_names:
             if self.device_friendly_names[s] == section:
                 section_number = self.section_friendly_names[s]
                 for d in s:
@@ -145,7 +145,7 @@ class controller(object):
             if section == self.device_friendly_names[s]:
                 for d in s:
                     get_one_device(self, section, device_friendly_names['d'])
-        return self.device_friendly_names[section]
+        self.device_friendly_names[section]
                     
                     
     def get_all_sections(self , section):
