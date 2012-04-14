@@ -45,16 +45,15 @@ class Controller(object):
             
         self.rev_device_friendly_names[section][friendly_name] = device_number
         
-    def get_section_friendly_names(self, section_number):
+    def get_section_friendly_name(self, section_number):
         return self.section_friendly_names[section_number]
-        return self.rev_section_friendly_names[section_number]
-        
+       
     def get_device_friendly_name(self , section , device_number):
         
         if not str(section).isdigit():
             section = self.rev_section_friendly_names[section]
         
-        self.device_friendly_names[section][device_number] = friendly_name
+        self.device_friendly_names[section][device_number]
         
         if section not in self.rev_device_friendly_names.keys():
             self.rev_device_friendly_names[section] = {}
