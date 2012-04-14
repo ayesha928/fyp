@@ -1,158 +1,111 @@
 from lib.protocol import encode_command, decode_command
-
-class controller(object):
+class Controller(object):
     """
-    controller class contain those methods and functions which are part of controller module.
+    controller class contains those methods and functions which are part of controller module.
     It is the part which will interact with PCB as well as smart phone! 
     friendly names are the human readable names for the section and devices.
     """
-    section = 0
-    device = 0
-    status = 0
            
-    section_friendly_names = {'1':'' , '2':'' , '3':'' , '4':'' , '5':'' , '6':'' , '7':'' , '8':''}
-    device_friendly_names = {section_friendly_names['1']:{'1':'' , '2':'' , '3':'' , '4':'' , '5':'', '6':'' , '7':'' , '8':''},
-        section_friendly_names['2']:{'1':'' , '2':'' ,'3':'' , '4':'' , '5':'' , '6':'' , '7':'' , '8':''},
-        section_friendly_names['3']:{'1':'' , '2':'' ,'3':'' , '4':'' , '5':'' , '6':'' , '7':'' , '8':''},
-        section_friendly_names['4']:{'1':'' , '2':'' ,'3':'' , '4':'' , '5':'' , '6':'' , '7':'' , '8':''},
-        section_friendly_names['5']:{'1':'' , '2':'' ,'3':'' , '4':'' , '5':'' , '6':'' , '7':'' , '8':''},
-        section_friendly_names['6']:{'1':'' , '2':'' ,'3':'' , '4':'' , '5':'' , '6':'' , '7':'' , '8':''},
-        section_friendly_names['7']:{'1':'' , '2':'' ,'3':'' , '4':'' , '5':'' , '6':'' , '7':'' , '8':''},
-        section_friendly_names['8']:{'1':'' , '2':'' ,'3':'' , '4':'' , '5':'' , '6':'' , '7':'' , '8':''} }
-           
-    def reverse_dict (self, section_friendly_name):
-        rev_section_friendly_names = dict((v,k) for k,v in self.section_friendly_names.iteritems())
-        rev_device_friendly_names = dict((v,k) for k,v in self.device_friendly_names.iteritems())
-           
-    def get_section_names(self, section_list):
+    def __init__(self, infilename, outfilename):
+        self.infile = open(infilename, 'rb')
+        self.outfile = open(outfilename, 'wb')
+        
+        self.section_friendly_names = {1:'' , 2:'' , 3:'' , 4:'' , 5:'' , 6:'' , 7:''}
+        self.device_friendly_names = {1:{1:'', 2:'' , 3:'' , 4:'' , 5:'', 6:'' , 7:'' },
+                                      2:{1:'', 2:'' , 3:'' , 4:'' , 5:'' , 6:'' , 7:''},
+                                      3:{1:'', 2:'' , 3:'' , 4:'' , 5:'' , 6:'' , 7:''},
+                                      4:{1:'', 2:'' , 3:'' , 4:'' , 5:'' , 6:'' , 7:''},
+                                      5:{1:'', 2:'' , 3:'' , 4:'' , 5:'' , 6:'' , 7:''},
+                                      6:{1:'', 2:'' , 3:'' , 4:'' , 5:'' , 6:'' , 7:''},
+                                      7:{1:'', 2:'' , 3:'' , 4:'' , 5:'' , 6:'' , 7:''}
+                                     }
+        
+        self.rev_section_friendly_names = {}
+        self.rev_device_friendly_names = {}
+    
+    def __del__(self):
+        self.infile.close()
+        self.outfile.close()
+    
+    def set_section_friendly_name(self, section_number, friendly_name):
         """
-        get_section_names is a function that assigns names to sections
-        :param section_list: a list of length 8
+        This is a function that assigns names to sections
+        :param sectiom_number: Numerical number of section
+        :param friendly_name: Human readable name of the section
         """
-        for s in section_list:
-            self.section_friendly_names['s'] = section_list[s]
-        return self.section_friendly_names[section_list]
-           
-    def get_device_names(self, device_list):
+        self.section_friendly_names[section_number] = friendly_name
+        self.rev_section_friendly_names[friendly_name] = section_number
+    
+    def set_device_friendly_name(self, section, device_number, friendly_name):
         """
-        get_device_names is a function that gets names of the devices.
-        :param device_list: a device list of 8 rows, 8 columns
+        This is a function that sets the human readable name of device
+        :param section: Numerical number or character string for the section
+        :param device_number: Numerical number for the device
+        :param friendly_name: Human readable name for the device
         """
-        for s in device_list:
-            for d in s:
-                self.device_friendly_names['d'] = device_list[s][d]
-        return self.device_friendly_names[device_list]
 
-    def set_one_device(self, section, device, status):
+        if not str(section).isdigit():
+            section = self.rev_section_friendly_names[section]
+        
+        self.device_friendly_names[section][device_number] = friendly_name
+        
+        if section not in self.rev_device_friendly_names.keys():
+            self.rev_device_friendly_names[section] = {}
+            
+        self.rev_device_friendly_names[section][friendly_name] = device_number
+        
+    def get_section_friendly_name(self, section_number):
         """
-        set_one_device is a function that sets status of one device in a section
+        This function returns the friendly name for section.
+        :param section_number: Numerical number for the section
+        """
+        return self.section_friendly_names[section_number]
+
+    def get_device_friendly_name(self , section , device_number):
+        """
+        This function returns a human readable name for the device
+        :param section: Numerical number or character string for the section
+        :device_number: Numerical number for the device
+        """
+        
+        if not str(section).isdigit():
+            section = self.rev_section_friendly_names[section]
+
+        return self.device_friendly_names[section][device_number]
+
+        
+    def get_device_number(self,section, device):
+        """
+        This is a function that returns status of one device
         :param section: Numerical number or character string for the section
         :param device: Numerical number or character string for the device
         """
-    if isinstance(section, device, str):
-            for s in self.device_friendly_names:
-            if self.device_friendly_names[s] == section:
-                section_number = self.section_friendly_names[s]
-                for d in s:
-                    if self.device_friendly_names['s']['d'] == device:
-                        device_number = self.device_friendly_names[s][d]
-        if isinstance(section, device, str):
-            for s in rev_device_friendly_names:
-                if self.rev_device_friendly_names['s'] == section:
-                    section_number = section_friendly_names[s]
-                    for d in s:
-                `       self.rev_device_friendly_names['s']['d'] == device:
-                            device_number =self.rev_device_friendly_names[s][d]
-                            byte = encode_command(1, status, section_number, device_number)
-                            infile = open('infile.txt', 'wb')
-                            input_byte = infilef.write(byte)
-                            infile.close()
-                            time.sleep(1)
-                            outfile = open('outfile.txt', 'rb')
-                            outfile.seek(-1, 2) 
-                            byte = outfile.read()
-                            outfile.close()
-                            dict_status = decode_command(byte)
-                                if section == dict_status['section'] and device == dict_status['device'] and status ==dict_status['status']:
-                                    print "Status of " + dict_status['device'] + " in " + section + " as " + dict_status['status'] + " has been set successfully!"
-                                else:
-                                    print "Device: " + dict_status['device'] + " in " + section + " as " + dict_status['status'] + " cannot be set successfully!"
-            self.rev_device_friendly_names[section][device] = status
-     
-    def set_one_section(self, section, status):
+        if not str(section).isdigit():
+            section = self.rev_section_friendly_names[section]
+        
+        return self.rev_device_friendly_names[section][device]
+        
+    def get_section_number(self,section_name):
         """
-        set_one_section is a function that takes two parameters - section and status
-        :param status: Can either be 'ON' or 'OFF'
-        :param section: Numerical number or character string for the section
+        This function returns the number of section
+        :param section_name: Character string for the section
         """
-        for s in self.device_friendly_names:
-            if section == self.device_friendly_names[s]:
-                for d in s:
-                    set_one_device(self, section, device_friendly_names['d'],status)
-        self.device_friendly_names[section] =  status
-     
-    def set_all_sections(self, section , status):
+        return self.rev_section_friendly_names[section_name]
+    
+    def set_device_status(self,section_name, device_name, status):
         """
-        set_all_sections is a function that set status ON/OFF to all devices of all sections
-        :param status: Can either be 'ON' or 'OFF'
+        This is a function that sets status of one device
+        :param section_name: Character string for the section
+        :param device_name: Character string for the device
+        :status: Can either be 'ON' or 'OFF'
         """
-        for s in device_friendly_names:
-            set_one_section(self, device_friendly_names[s], status)
-        self.device_friendly_names[section] =  status
-           
-    def get_one_device(self, section, device):
+        self.device_friendly_names[section_name][device_name] = status
+        
+    def get_device_status(self,section_name, device_name):
         """
-        get_status_of_one_device is a function that print status of one device in one section
-        :param section: Numerical number or character string for the section
-        :param device: Numerical number or character string for the device
+        This function returns the status of device
+        :param section_name: Character string for the section 
+        :param device_name: Character string for the device
         """
-        if isinstance(section, device, str):
-            for s in self.device_friendly_names:
-                if self.device_friendly_names[s] == section:
-                    section_number = section_friendly_names[s]
-                    for d in s:
-                        if self.device_friendly_names['s']['d'] == device:
-                            device_number = self.device_friendly_names[s][d]
-                            if isinstance(section, device, str):
-                                for s in self.rev_device_friendly_names:
-                                    if self.rev_device_friendly_names['s'] == section:
-                                        section_number = section_friendly_names[s]
-                                        for d in s:
-                                            if self.rev_device_friendly_names['s']['d'] == device:
-                                                device_number =self.rev_device_friendly_names[s][d]
-                                                byte = encode_command(0, 0, section_number, device_number)
-                                                infile = open('infile.txt', 'wb')
-                                                input_byte = infile.write(byte)
-                                                infile.close()
-                                                time.sleep(1)
-                                                outfile = open('outfile.txt', 'rb')
-                                                outfilef.seek(-1, 2) 
-                                                byte = outfile.read()
-                                                outfile.close()
-                                                dict_status = decode_command(byte)
-                                                if section == dict_status['section'] and device == dict_status['device']:
-                                                    print "Status of " + device + " in " + section + " : " + dict_status['status']
-                                                else:
-                                                    print "Device: " + dict_status['device'] + " is unavailable!"
-            return self.rev_device_friendly_names[section][device]
-     
-    def get_one_section(self, section):
-        """
-        get_status_of_one_section is a function that print status of all devices
-        :param section: Numerical number or character string for the section
-        """
-        for s in self.device_friendly_names:
-            if section == self.device_friendly_names[s]:
-                for d in s:
-                    get_one_device(self, section, device_friendly_names['d'])
-        self.device_friendly_names[section]
-                    
-                    
-    def get_all_sections(self , section):
-        """
-        get_all_sections is a function that print status of all devices of all sections
-        """
-        for s in device_friendly_names:
-            get_one_section(self, device_friendly_names[s])
-        return self.device_friendly_names[section][section]
-
+    
+        return self.device_friendly_names[section_name][device_name]

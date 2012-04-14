@@ -53,6 +53,78 @@
   <div class="section" id="controller-module">
 <span id="controller"></span><h1>Controller Module<a class="headerlink" href="#controller-module" title="Permalink to this headline">¶</a></h1>
 <p>Contains code for the controller module of the system.</p>
+<span class="target" id="module-controller.controller"></span><dl class="class">
+<dt id="controller.controller.Controller">
+<em class="property">class </em><tt class="descclassname">controller.controller.</tt><tt class="descname">Controller</tt><big>(</big><em>infilename</em>, <em>outfilename</em><big>)</big><a class="headerlink" href="#controller.controller.Controller" title="Permalink to this definition">¶</a></dt>
+<dd><p>controller class contains those methods and functions which are part of controller module.
+It is the part which will interact with PCB as well as smart phone! 
+friendly names are the human readable names for the section and devices.</p>
+<dl class="method">
+<dt id="controller.controller.Controller.get_device_friendly_name">
+<tt class="descname">get_device_friendly_name</tt><big>(</big><em>section</em>, <em>device_number</em><big>)</big><a class="headerlink" href="#controller.controller.Controller.get_device_friendly_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns a human readable name for the device
+:param section: Numerical number or character string for the section
+:device_number: Numerical number for the device</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="controller.controller.Controller.get_device_number">
+<tt class="descname">get_device_number</tt><big>(</big><em>section</em>, <em>device</em><big>)</big><a class="headerlink" href="#controller.controller.Controller.get_device_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a function that returns status of one device
+:param section: Numerical number or character string for the section
+:param device: Numerical number or character string for the device</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="controller.controller.Controller.get_device_status">
+<tt class="descname">get_device_status</tt><big>(</big><em>section_name</em>, <em>device_name</em><big>)</big><a class="headerlink" href="#controller.controller.Controller.get_device_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns the status of device
+:param section_name: Character string for the section 
+:param device_name: Character string for the device</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="controller.controller.Controller.get_section_friendly_name">
+<tt class="descname">get_section_friendly_name</tt><big>(</big><em>section_number</em><big>)</big><a class="headerlink" href="#controller.controller.Controller.get_section_friendly_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns the friendly name for section.
+:param section_number: Numerical number for the section</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="controller.controller.Controller.get_section_number">
+<tt class="descname">get_section_number</tt><big>(</big><em>section_name</em><big>)</big><a class="headerlink" href="#controller.controller.Controller.get_section_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns the number of section
+:param section_name: Character string for the section</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="controller.controller.Controller.set_device_friendly_name">
+<tt class="descname">set_device_friendly_name</tt><big>(</big><em>section</em>, <em>device_number</em>, <em>friendly_name</em><big>)</big><a class="headerlink" href="#controller.controller.Controller.set_device_friendly_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a function that sets the human readable name of device
+:param section: Numerical number or character string for the section
+:param device_number: Numerical number for the device
+:param friendly_name: Human readable name for the device</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="controller.controller.Controller.set_device_status">
+<tt class="descname">set_device_status</tt><big>(</big><em>section_name</em>, <em>device_name</em>, <em>status</em><big>)</big><a class="headerlink" href="#controller.controller.Controller.set_device_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a function that sets status of one device
+:param section_name: Character string for the section
+:param device_name: Character string for the device
+:status: Can either be &#8216;ON&#8217; or &#8216;OFF&#8217;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="controller.controller.Controller.set_section_friendly_name">
+<tt class="descname">set_section_friendly_name</tt><big>(</big><em>section_number</em>, <em>friendly_name</em><big>)</big><a class="headerlink" href="#controller.controller.Controller.set_section_friendly_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a function that assigns names to sections
+:param sectiom_number: Numerical number of section
+:param friendly_name: Human readable name of the section</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
