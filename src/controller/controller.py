@@ -45,7 +45,7 @@ class Controller(object):
         """
 
         if not str(section).isdigit():
-            section = self.rev_section_friendly_names[section]
+            section = self.get_section_number(section)
         
         self.device_friendly_names[section][device_number] = friendly_name
         
@@ -85,27 +85,30 @@ class Controller(object):
         
         return self.rev_device_friendly_names[section][device]
         
-    def get_section_number(self,section_name):
+    def get_section_number(self, section_name):
         """
         This function returns the number of section
         :param section_name: Character string for the section
         """
+        print(self.rev_section_friendly_names)
         return self.rev_section_friendly_names[section_name]
     
-    def set_device_status(self,section_name, device_name, status):
+    def set_device_status(self, section_name, device_name, status):
         """
         This is a function that sets status of one device
         :param section_name: Character string for the section
         :param device_name: Character string for the device
         :status: Can either be 'ON' or 'OFF'
         """
-        self.device_friendly_names[section_name][device_name] = status
         
-    def get_device_status(self,section_name, device_name):
+        #TODO: Set device status using dummy PCB.
+        pass
+        
+    def get_device_status(self, section_name, device_name):
         """
         This function returns the status of device
         :param section_name: Character string for the section 
         :param device_name: Character string for the device
         """
-    
-        return self.device_friendly_names[section_name][device_name]
+        #TODO: Fetch device status using dummy PCB.
+        pass
