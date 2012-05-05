@@ -41,5 +41,5 @@ class TestController(unittest.TestCase):
         self.my_controller.set_section_friendly_name(2 , "Living Room")
         self.my_controller.set_device_friendly_name(2, 1, 'Tube Light')
         self.my_controller.set_device_status("Living Room" , 'Tube Light' , 'ON')
-        assert "ON" == self.my_controller.get_device_status("Living Room", "Tube Light")
+        assert 'ON' == self.my_controller.get_device_status("Living Room", "Tube Light")
     

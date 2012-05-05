@@ -100,15 +100,55 @@ class Controller(object):
         :param device_name: Character string for the device
         :status: Can either be 'ON' or 'OFF'
         """
+        SET = 1, 
+        GET = 0, 
+        ON = 1, 
+        OFF = 0,
+        self.rev_section_friendly_names[section_number] = sectiom_number
+        self.rev_device_friendly_names[device_number] = device_number
         
-        #TODO: Set device status using dummy PCB.
-        pass
-        
+        cmd = C.encode_command(command_type, status, section_number, device_number )
+
+        if 'SET' == cmd['command_type']:
+            section = cmd['section']
+            device  = cmd ['device']
+            status  = self.set_device_status[section][device]
+            byte = encode_command( cmd['command_type'], cmd['status'], cmd['section'], cmd['device'] )
+        return True
+
+        infile.write(byte)
+        infile.flush()
+
+        time.sleep(1)
+        outfile.seek(-1,2)
+        byte = outfile.read
+        cmd = C.decode_command(byte)
+         
     def get_device_status(self, section_name, device_name):
         """
         This function returns the status of device
         :param section_name: Character string for the section 
         :param device_name: Character string for the device
         """
-        #TODO: Fetch device status using dummy PCB.
-        pass
+        self.rev_section_friendly_names[section_number] = sectiom_number
+        self.rev_device_friendly_names[device_number] = device_number
+        
+         cmd = C.encode_command(command_type, status, section_number, device_number )
+
+        
+        if 'GET' == cmd['command_type']:
+            section = cmd['section']
+            device  = cmd ['device']
+            status  = self.set_device_status[section][device]
+            cmd['status'] = status
+            byte = encode_command( cmd['command_type'], cmd['status'], cmd['section'], cmd['device'] )
+        return self.get_device_status[section][device] = status
+
+        
+        infile.write(byte)
+        infile.flush()
+
+        time.sleep(1)
+        outfile.seek(-1,2)
+        byte = outfile.read
+        cmd = C.decode_command(byte)
