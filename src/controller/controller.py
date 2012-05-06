@@ -1,4 +1,6 @@
 from lib.protocol import encode_command, decode_command
+import time
+
 class Controller(object):
     """
     controller class contains those methods and functions which are part of controller module.
@@ -6,9 +8,9 @@ class Controller(object):
     friendly names are the human readable names for the section and devices.
     """
            
-    def __init__(self, infilename, outfilename):
-        self.infile = open(infilename, 'rb')
-        self.outfile = open(outfilename, 'wb')
+    def __init__(self, infile, outfile):
+        self.infile = infile
+        self.outfile = outfile
         
         self.section_friendly_names = {1:'' , 2:'' , 3:'' , 4:'' , 5:'' , 6:'' , 7:''}
         self.device_friendly_names = {1:{1:'', 2:'' , 3:'' , 4:'' , 5:'', 6:'' , 7:'' },
@@ -90,7 +92,7 @@ class Controller(object):
         This function returns the number of section
         :param section_name: Character string for the section
         """
-        print(self.rev_section_friendly_names)
+        #print(self.rev_section_friendly_names)
         return self.rev_section_friendly_names[section_name]
     
     def set_device_status(self, section_name, device_name, status):
@@ -100,55 +102,68 @@ class Controller(object):
         :param device_name: Character string for the device
         :status: Can either be 'ON' or 'OFF'
         """
-        SET = 1, 
-        GET = 0, 
-        ON = 1, 
-        OFF = 0,
-        self.rev_section_friendly_names[section_number] = sectiom_number
-        self.rev_device_friendly_names[device_number] = device_number
         
-        cmd = C.encode_command(command_type, status, section_number, device_number )
-
-        if 'SET' == cmd['command_type']:
-            section = cmd['section']
-            device  = cmd ['device']
-            status  = self.set_device_status[section][device]
-            byte = encode_command( cmd['command_type'], cmd['status'], cmd['section'], cmd['device'] )
-        return True
-
-        infile.write(byte)
-        infile.flush()
-
-        time.sleep(1)
-        outfile.seek(-1,2)
-        byte = outfile.read
-        cmd = C.decode_command(byte)
-         
+        # What language is this? Why are there commas after the lines?
+        
+        #SET = 1, 
+        #GET = 0, 
+        #ON = 1, 
+        #OFF = 0,
+        
+        # apart from the spelling mistakes, are we trying to set the section number or get it?
+        #self.rev_section_friendly_names[section_number] = sectiom_number
+        #self.rev_device_friendly_names[device_number] = device_number
+        
+        section_number = self.get_section_number(section_name)
+        device_number = self.get_device_number(section_number, device_name)
+        
+        # What is C???????
+        #cmd = C.encode_command(command_type, status, section_number, device_number )
+        cmd = encode_command('SET', status, section_number, device_number)
+        
+        self.outfile.write(cmd)
+        self.outfile.flush()
+        
+        self.infile.seek(0,2)
+        while 0 == self.infile.tell():
+            self.infile.seek(0,2)
+            time.sleep(1)
+        
+        self.infile.seek(-1,2)
+        byte = self.infile.read()
+        
+        #cmd_response = decode_command(byte)
+        #print (ord(byte), ord(cmd))
+        if byte == cmd:
+            return True
+        else:
+            return False
+    
     def get_device_status(self, section_name, device_name):
         """
         This function returns the status of device
         :param section_name: Character string for the section 
         :param device_name: Character string for the device
         """
-        self.rev_section_friendly_names[section_number] = sectiom_number
-        self.rev_device_friendly_names[device_number] = device_number
+        #self.rev_section_friendly_names[section_number] = sectiom_number
+        #self.rev_device_friendly_names[device_number] = device_number
+        #
+        #cmd = C.encode_command(command_type, status, section_number, device_number )
         
-         cmd = C.encode_command(command_type, status, section_number, device_number )
-
+        section_number = self.get_section_number(section_name)
+        device_number = self.get_device_number(section_number, device_name)
         
-        if 'GET' == cmd['command_type']:
-            section = cmd['section']
-            device  = cmd ['device']
-            status  = self.set_device_status[section][device]
-            cmd['status'] = status
-            byte = encode_command( cmd['command_type'], cmd['status'], cmd['section'], cmd['device'] )
-        return self.get_device_status[section][device] = status
-
+        cmd = encode_command('GET', 'OFF', section_number, device_number)
+        self.outfile.write(cmd)
+        self.outfile.flush()
         
-        infile.write(byte)
-        infile.flush()
-
-        time.sleep(1)
-        outfile.seek(-1,2)
-        byte = outfile.read
-        cmd = C.decode_command(byte)
+        self.infile.seek(0,2)
+        while 0 == self.infile.tell():
+            self.infile.seek(0,2)
+            time.sleep(1)
+        
+        self.infile.seek(-1,2)
+        byte = self.infile.read()
+        
+        cmd_response = decode_command(byte)
+        return cmd_response['status']
