@@ -1,0 +1,6 @@
+      [paste.app_factory]
+      main = fyp:main
+      [console_scripts]
+      populate_fyp = fyp.scripts.populate:main
+      fyp_newapp = fyp.scripts.newapp:main
+      
