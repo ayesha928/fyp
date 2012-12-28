@@ -1,0 +1,6 @@
+      [paste.app_factory]
+      main = dojo:main
+      [console_scripts]
+      populate_dojo = dojo.scripts.populate:main
+      dojo_newapp = dojo.scripts.newapp:main
+      
